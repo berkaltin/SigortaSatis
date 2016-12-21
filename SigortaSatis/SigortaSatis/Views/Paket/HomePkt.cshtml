@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "HomePkt";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Giriş Yapın</div>
+    <div class="panel-body">
+
+        <form enctype="multipart/form-data" class="form-horizontal" method="post" action="/Account/HomeSatis">
+            <div class="form-group">
+                <label for="tapuno" class="col-sm-4 control-label">Tapu Numaranız :</label>
+                <input class="form-control col-xs-12" name="txtTAPUNO" placeholder="Tapu-no" />
+            </div>
+            <div class="form-group">
+                <label for="adres" class="col-sm-4 control-label">Ev Adresiniz :</label>
+                <input class="form-control col-xs-12" name="txtADRES" placeholder="Adres" />
+            </div>
+            </div>
+            <button class="btn btn-success col-sm-offset-4">SATIN AL</button>
+        </form>
+        @*@Html.Partial("Counter")*@
+    </div>
+</div>
+
+

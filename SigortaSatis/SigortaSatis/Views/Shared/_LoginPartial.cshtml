@@ -1,0 +1,40 @@
+﻿@*@using Microsoft.AspNet.Identity*@
+@if (Convert.ToBoolean(Session["IsAuthenticated"]))
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <div class="dropdown">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hoşgeldin  @Session["name"].ToString() <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Bilgileri Güncelle", "Manage", "Account")</li>
+                            
+                            @if (Convert.ToBoolean(Session["IS_SYSADM"]))
+                            {   
+                                <li>@Html.ActionLink("Yönetim Paneli", "Admin", "Account")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Yönetim Paneli", "Cust", "Account")</li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Çıkış</a></li>
+                </ul>
+            </div>
+
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Kayıt Ol", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Giriş", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
