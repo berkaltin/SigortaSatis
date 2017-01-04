@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Cust";
+}
+@if (Convert.ToBoolean(Session["IS_ADMIN"]))
+{
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail">
+                        <img src="@Url.Content(Session["avatarimg"].ToString())" alt="avatar" />
+                    </a>
+                </div>
+            </div>
+            <br />
+            <hr class="colorgraph">
+            <br />
+            <div id="exTab1" class="container">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#1a" data-toggle="tab">Araba Paketleri</a>
+                    </li>
+                    <li>
+                        <a href="#2a" data-toggle="tab">Ev Paketleri</a>
+                    </li>
+                    
+                </ul>
+
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="1a">
+                        <br />
+                        <table class="table table-bordered">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Paket Adı</th>
+                                    <th>Alanın Adı</th>
+                                    <th>Plaka</th>
+                                    <th>SaşeNo</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @try
+                                {
+                                    foreach (var carpkt in ViewBag.CARPKT)
+                                    {
+                                        <tr>
+
+
+                                            <th style="text-align: center; line-height: 50px;" scope="row">1</th>
+                                            <td style="text-align: center; line-height: 50px;">@carpkt.PKTID</td>
+                                            <td style="text-align: center; line-height: 50px;">@carpkt.USRID</td>
+                                            <td style="text-align: center; line-height: 50px;">@carpkt.PLAKA</td>
+                                            <td style="text-align: center; line-height: 50px;">@carpkt.SASENO</td>
+                                            
+                                           
+
+
+
+
+                                        </tr>
+                                    }
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="2a">
+                        <br />
+                        <table class="table table-bordered">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Paket Adı</th>
+                                    <th>Alanın Adı</th>
+                                    <th>Tapu No</th>
+                                    <th>Adres</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @try
+                                {
+                                    foreach (var homepkt in ViewBag.HOMEPKT)
+                                    {
+                                        <tr>
+
+
+                                            <th style="text-align: center; line-height: 50px;" scope="row">1</th>
+                                            <td style="text-align: center; line-height: 50px;">@homepkt.PKTID</td>
+                                            <td style="text-align: center; line-height: 50px;">@homepkt.USRID</td>
+                                            <td style="text-align: center; line-height: 50px;">@homepkt.TAPUNO</td>
+                                            <td style="text-align: center; line-height: 50px;">@homepkt.ADRES</td>
+
+
+
+
+
+
+                                        </tr>
+                                    }
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
+
+                            </tbody>
+                        </table>
+                        </div>
+                    
+                </div>
+            </div>
+
+            @*<div class="row margin">
+                    <div class="col-sm-4">
+                        <a class="btn btn-block btn-default" href="@Url.Action("Index","Comments")">
+                            <i class="fa fa-commenting fa-3x"></i><br> <small>Yorumlar</small>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-block btn-default" href="@Url.Action("Index","Logs")">
+                            <i class="fa fa-area-chart fa-3x"></i><br> <small>İşlem Kayıtları</small>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-block btn-default" href="@Url.Action("Index", "ProjectAccesses")">
+                            <i class="fa fa-exchange fa-3x"></i><br> <small>Proje Erişimleri</small>
+                        </a>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-remove"></span>
+        <span class="sr-only">Error:</span>
+        Yetkiniz Yok.
+    </div>
+}
+
+
